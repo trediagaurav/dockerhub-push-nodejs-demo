@@ -12,23 +12,23 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t tredia/nodeapp:$BUILD_NUMBER .'
+                bat 'docker build -t tredia/nodeapp:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
             steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
         stage('push image') {
             steps{
-                sh 'docker push tredia/nodeapp:$BUILD_NUMBER'
+                bat 'docker push tredia/nodeapp:$BUILD_NUMBER'
             }
         }
 }
 post {
         always {
-            sh 'docker logout'
+            bat 'docker logout'
         }
     }
 }
