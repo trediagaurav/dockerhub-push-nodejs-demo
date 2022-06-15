@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('tredia-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('gaurav-dockerhub')
     }
     stages { 
         stage('SCM Checkout') {
