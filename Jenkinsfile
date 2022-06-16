@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                bat 'docker build -t tredia/nodeapp:test1.1.'
+                bat 'docker build -t tredia/nodeapp:test1.1 .'
             }
         }
         stage('login to dockerhub') {
