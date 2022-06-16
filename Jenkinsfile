@@ -12,17 +12,17 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                bat 'docker build -t tredia/nodeapp:$BUILD_NUMBER .'
+                bat 'docker build -t tredia/nodeapp:test1.1.'
             }
         }
         stage('login to dockerhub') {
             steps{
-                bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                bat 'docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
         stage('push image') {
             steps{
-                bat 'docker push tredia/nodeapp:$BUILD_NUMBER'
+                bat 'docker push tredia/nodeapp:test1.1'
             }
         }
 }
